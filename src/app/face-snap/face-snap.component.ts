@@ -16,13 +16,13 @@ export class FaceSnapComponent implements OnInit {
     private routeur: Router){}
 
   ngOnInit() {
-    this.buttonText = "Oh snap!";
+    //this.buttonText = "Oh snap!";
   }
 
   onSnap() {
     if(this.buttonText === "Oh snap!") {
       this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'snap');
-      this.buttonText = "Ooops snaps";
+      this.buttonText = 'Oops, unSnap!';
     } else {
       this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'unsnap');
       this.buttonText = "Oh snap!";

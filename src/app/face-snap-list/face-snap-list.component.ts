@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { interval, tap } from 'rxjs';
+import { interval, Observable, tap } from 'rxjs';
 import { FaceSnap } from '../models/face-snap.model';
 import { FaceSnapService } from '../services/face-snaps.service';
 
@@ -10,12 +10,15 @@ import { FaceSnapService } from '../services/face-snaps.service';
 })
 export class FaceSnapListComponent implements OnInit {
 
-  faceSnaps!: FaceSnap[];
+  //faceSnaps!: FaceSnap[];
+  faceSnaps$!: Observable<FaceSnap[]>
 
   constructor(private faceSnapService: FaceSnapService) { }
 
   ngOnInit(): void {
-    this.faceSnaps = this.faceSnapService.getAllFaceSnaps();
+    
+    this.faceSnaps$ = this.faceSnapService.getAllFaceSnaps();
+    //this.faceSnaps = this.faceSnapService.getAllFaceSnaps();
     /*
     interval(1000).pipe(
       tap(console.log)
